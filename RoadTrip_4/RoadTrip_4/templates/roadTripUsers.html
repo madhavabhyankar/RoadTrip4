@@ -1,0 +1,10 @@
+﻿<div>
+    <a data-ng-href="#/addUsersToRoadTrip/{{roadTripId}}" class="btn btn-info">Add Users</a>
+    <a data-ng-href="#/roadTripDetail/{{roadTripId}}" class="btn btn-default">Back</a>
+    <br/>
+    <hr/>
+    Current Users
+    <ul data-ng-repeat="person in peopleInRoadTrip|orderBy:nickName:true">
+        <li>{{person.nickName}}</li>
+    </ul>
+</div>

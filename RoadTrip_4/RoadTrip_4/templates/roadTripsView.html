@@ -1,0 +1,10 @@
+﻿<div>
+    <a href="#/newRoadTrip" class="btn btn-info">Start A New RoadTrip</a>
+    <br/>
+    <hr/>
+    <ul data-ng-repeat="trip in data.roadTrips | orderBy:startDate:false"  class="nav nav-list">
+        <li>
+            <a data-ng-href="#/roadTripDetail/{{trip.id}}" class="btn btn-default btn-xs"> {{trip.name}}</a>
+        </li>
+    </ul>
+</div>

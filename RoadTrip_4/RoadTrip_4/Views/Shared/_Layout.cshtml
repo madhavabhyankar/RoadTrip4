@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Road Trip</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!-- Add custom CSS here -->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    
+</head>
+    <body>
+        @RenderBody()
+        <script src="~/Scripts/jquery-2.0.3.js"></script>
+        @*@Scripts.Render("~/bundles/jquery")*@
+        
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        @RenderSection("scripts", required: false)
+   
+
+    </body>
+</html>

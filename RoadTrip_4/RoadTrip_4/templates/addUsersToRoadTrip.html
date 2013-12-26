@@ -1,0 +1,16 @@
+﻿<div>
+    <form name="addUserForm" novalidate data-ng-submit="addUser()" class="form-horizontal">
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input name="email" type="email" data-ng-model="addUserToRoadTrip.email" required/>
+               
+                <span class="error" data-ng-show="addUserForm.email.$error.required">*</span>
+            </div>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-info" value="Add" data-ng-disabled="addUserForm.$invalid"/>
+            <a href="#/roadTripUsers/{{roadTripId}}">Cancel</a>
+        </div>
+    </form>
+</div>

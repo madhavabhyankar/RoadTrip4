@@ -1,0 +1,53 @@
+﻿@model RoadTrip_4.Data.UserDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Road Trip</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+</head>
+    <body data-ng-app="myRoadTrips">
+        
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <h3>Welcome 
+                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i>@Html.DisplayFor(x=>x.NickName)</a>
+                    </h3>
+
+            }
+        <hr/>
+        @Html.Hidden("hfUserId", Model.Id)
+        <div data-ng-view="">
+        </div>
+        
+
+        <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/angular-route.min.js"></script>
+        
+        @*App*@
+        <script src="~/Application/myRoadTripsApp.js"></script>
+        
+        @*Services*@
+        <script src="~/Application/dataService.js"></script>
+        
+        @*Controllers*@
+        <script src="~/Application/Controllers/roadTripsController.js"></script>
+        <script src="~/Application/Controllers/newRoadTripController.js"></script>
+        <script src="~/Application/Controllers/roadTripDetail.js"></script>
+        <script src="~/Application/Controllers/roadTripUsersController.js"></script>
+        <script src="~/Application/Controllers/addUsersToRoadTripController.js"></script>
+        <script src="~/Application/Controllers/expensesController.js"></script>
+        <script src="~/Application/Controllers/addNewExpenseController.js"></script>
+        <script src="~/Application/Controllers/lendMoneyController.js"></script>
+    </body>
+</html>

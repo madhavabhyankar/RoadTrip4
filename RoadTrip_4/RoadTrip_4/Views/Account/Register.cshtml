@@ -1,0 +1,75 @@
+﻿@model RoadTrip_4.Data.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h1>Road Trip</h1>
+<hr/>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { ReturnUrl = ViewBag.ReturnUrl, @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Create a new account</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.UserName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.LastName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.NickName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.NickName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.PasswordFor(m => m.Password)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </div>
+        </div>
+        <div class="form-group">
+            @*<label class="control-label" for="btnLogin"></label>*@
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

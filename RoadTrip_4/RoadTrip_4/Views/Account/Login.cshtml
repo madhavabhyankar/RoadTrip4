@@ -1,0 +1,63 @@
+﻿@model RoadTrip_4.Data.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+<h1>Road Trip</h1>
+<hr/>
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { returnUrl = ViewBag.ReturnUrl, @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "UserName", @class = "input-small" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "input-small" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    @*<label class="control-label" for="btnLogin"></label>*@
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" name="btnLogin" class="btn btn-primary" value="Log In" />
+                        @Html.ActionLink("Register", "Register", "Account", null, new { @class = "btn btn-info" })
+                        
+
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+
+        
+    }
+</section>
+
+@*<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

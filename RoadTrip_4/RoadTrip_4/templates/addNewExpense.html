@@ -1,0 +1,24 @@
+﻿<div>
+    
+    <form name="newExpenseForm" novalidate data-ng-submit="saveExpense()" class="form-horizontal">
+        <div class="form-group">
+            <label for="amount" class="col-sm-2 control-label">Amount</label>
+            <div class="col-sm-10">
+                <input name="amount" type="text" data-ng-model="newExpense.amount" required/>
+                <span class="error" data-ng-show="newExpenseForm.amount.$error.required">*</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="expenseDate" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+                <input name="expenseDate" type="date" data-ng-model="newExpense.expenseDate" required/>
+                <span class="error" data-ng-show="newExpenseForm.expenseDate.$error.required">*</span>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Save" class="btn btn-default" data-ng-disabled="newExpenseForm.$invalid" />
+            <a data-ng-href="#/expenses/{{roadTripId}}" class="btn  btn-info">Back</a>
+        </div>
+    </form>
+    
+</div>

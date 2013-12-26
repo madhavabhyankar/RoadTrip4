@@ -1,0 +1,30 @@
+﻿<div>
+    <form name="lendMoneyForm" novalidate data-ng-submit="save()" class="form-horizontal">
+        <div class="form-group">
+            <label for="amount" class="col-sm-2 control-label">Borrowed Amount</label>
+            <div class="col-sm-10">
+                <input type="text" name="amount" data-ng-model="lendMoney.amount" required/>
+                <span class="error" data-ng-show="lendMoneyForm.amount.$error.required">*</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="expenseDate" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+                <input name="expenseDate" type="date" data-ng-model="lendMoney.expenseDate" required/>
+                <span class="error" data-ng-show="lendMoneyForm.expenseDate.$error.required">*</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="borrower" class="col-sm-2 control-label">Borrower</label>
+            <div class="col-sm-10">
+                <select id="brower" name="borrower" data-ng-model="borrower" data-ng-options="user.nickName for user in peopleInRoadTrip"></select>
+                
+                <span class="error" data-ng-show="lendMoneyForm.borrower.$error.required">*</span>
+            </div>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-default" value="Save" data-ng-disabled="lendMoneyForm.$invalid"/>
+            <a data-ng-href="#/expenses/{{roadTripId}}" class="btn  btn-info">Back</a>
+        </div>
+    </form>
+</div>

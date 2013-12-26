@@ -1,0 +1,22 @@
+﻿<div>
+    <a data-ng-href="#/roadTripUsers/{{roadTripId}}"class="btn btn-info">Manage Users</a>
+    <a data-ng-href="#/expenses/{{roadTripId}}"class="btn btn-danger">Expenses</a>
+    <a data-ng-href="#/"class="btn btn-default">Back</a>
+    <br/>
+    <hr/>
+    My Payments
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+            </tr>
+        </thead> 
+        <tbody data-ng-repeat="payout in payouts">
+            <tr>
+                <td>{{payout.payToName}}</td>
+                <th>{{payout.amount}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

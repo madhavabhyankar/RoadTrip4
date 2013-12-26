@@ -1,0 +1,48 @@
+﻿<div>
+    <a data-ng-href="#/addNewExpense/{{roadTripId}}" class="btn btn-danger">Add New Expense</a>
+    <a data-ng-href="#/lendMoney/{{roadTripId}}" class="btn btn-warning">Lend Money</a>
+    <a data-ng-href="#/roadTripDetail/{{roadTripId}}"class="btn btn-default">Back</a>
+    <br/>
+    <hr/>
+    Current Expenses
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Location</th>
+                
+            </tr>
+        </thead>
+        <tbody data-ng-repeat="expense in expenses|orderBy:expenseDate:false">
+            <tr>
+                <td>{{expense.owner.nickName}}</td>
+                <td>{{expense.expenseDate}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.city}}, {{expense.state}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br/>
+    <hr/>
+    My Expenses
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Location</th>
+                
+            </tr>
+        </thead>
+        <tbody data-ng-repeat="expense in myExpenses|orderBy:expenseDate:false">
+            <tr>
+                <td>{{expense.expenseDate}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.city}}, {{expense.state}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
