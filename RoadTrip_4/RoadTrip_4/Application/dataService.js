@@ -108,6 +108,37 @@ function ($http, $q) {
             });
         return deferred.promise;
     };
+    _joinRoadTrip = function(roadTripCodedId, userId, ownerEmailId) {
+        var deferred = $q.defer();
+        $http.get('/api/RoadTrips/' + roadTripCodedId + '/' + userId + '?ownerEmailId=' + ownerEmailId)
+            .then(function(result) {
+                _roadTrips.splice(0, 0, result.data);
+                deferred.resolve(result.data);
+            }, function(e) {
+                deferred.reject(e);
+            });
+        return deferred.promise;
+    };
+    _getRoadTripById = function (roadTripId, userid) {
+        deferred = $q.defer();
+        
+        if (!_roadTripsInitialized) {
+            _getRoadTripsForUser(userid).then(function(result) {
+                var data = _.filter(result, function(val) {
+                    return val.id === roadTripId;
+                });
+                deferred.resolve(data[0]);
+            }, function(e) {
+                deferred.reject(e);
+            });
+        } else {
+            var data = _.filter(_roadTrips, function(val) {
+                return val.id === roadTripId;
+            });
+            deferred.resolve(data[0]);
+        }
+        return deferred.promise;
+    }
     return {
         roadTrips: _roadTrips,
         getRoadTripsForUser: _getRoadTripsForUser,
@@ -118,7 +149,9 @@ function ($http, $q) {
         getMyExpensesForRoadTrip: _getMyExpensesForRoadTrip,
         saveNewRoadTripExpense: _saveNewRoadTripExpense,
         getPayoutForRoadTrip: _getPayoutForRoadTrip,
-        deleteRoadTrip: _deleteRoadTrip
+        deleteRoadTrip: _deleteRoadTrip,
+        joinRoadTrip: _joinRoadTrip,
+        getRoadTripById: _getRoadTripById
     };
     
 

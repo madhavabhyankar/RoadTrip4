@@ -21,6 +21,8 @@ namespace RoadTrip_4.Data
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public RoadTripStatus RoadTripStatus { get; set; }
+        public string RoadTripHashId { get; set; }
+
         [ForeignKey("Owner")]
         public int OwnerId { get; set; }
 

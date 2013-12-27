@@ -1,12 +1,16 @@
 ﻿<div>
-    <a href="#/newRoadTrip" class="btn btn-info">Start A New RoadTrip</a>
+    <div class="btn-group">
+        <a href="#/newRoadTrip" class="btn btn-info">Start A New RoadTrip</a>
+        <a href="#/joinRoadTrip" class="btn btn-success">Join New RoadTrip</a>
+    </div>
+    
     <br />
     <hr />
     <ul data-ng-repeat="trip in activeRoadTrps | orderBy:startDate:false" class="nav nav-list">
         <li>
             <div class="btn-group btn btn-primary ">
-                <a data-ng-href="#/roadTripDetail/{{trip.id}}" class=" whiteFont">{{trip.name}}</a>
-                <a data-ng-href="#/deleteRoadTrip/{{trip.id}}"><i class="fa fa-trash-o btn whiteFont"></i></a>
+                <a data-ng-href="#/roadTripDetail/{{trip.id}}" class="btn btn-sm whiteFont">{{trip.name}}</a>
+                <a data-ng-href="#/deleteRoadTrip/{{trip.id}}" data-ng-show="isDeletable(trip)"><i class="fa fa-trash-o btn whiteFont"></i></a>
             </div>
 
         </li>

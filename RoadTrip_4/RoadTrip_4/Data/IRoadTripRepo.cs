@@ -12,6 +12,7 @@ namespace RoadTrip_4.Data
         IQueryable<UserDetail> GetUsersForRoadTrip(Guid roadTripId);
         IQueryable<Expense> GetExpensesForRoadTrip(Guid roadTripId);
         RoadTrip GetRoadTripByRoadTripId(Guid roadTripId, bool includeExpenses, bool includeUsers);
+        RoadTrip GetRoadTripByRoadTripHash(string roadTripHashId);
         UserDetail GetUserDetailByEmail(string email);
         bool InviteUser(Invitation invitation);
         bool AddNewRoadTrip(RoadTrip roadTrip);

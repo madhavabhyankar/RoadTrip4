@@ -243,12 +243,18 @@
     <Compile Include="Migrations\201312271323429_abilityToDeleteRoadTrip.Designer.cs">
       <DependentUpon>201312271323429_abilityToDeleteRoadTrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312271844133_RoadTripHashCode.cs" />
+    <Compile Include="Migrations\201312271844133_RoadTripHashCode.Designer.cs">
+      <DependentUpon>201312271844133_RoadTripHashCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddNewUserToRoadTrip.cs" />
     <Compile Include="Models\PayoutModel.cs" />
     <Compile Include="Models\UserInformationModel.cs" />
     <Compile Include="Modules\IPayouts.cs" />
+    <Compile Include="Modules\IUtilities.cs" />
     <Compile Include="Modules\Payouts.cs" />
+    <Compile Include="Modules\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +262,7 @@
     <Content Include="Application\Controllers\addUsersToRoadTripController.js" />
     <Content Include="Application\Controllers\deleteRoadTripController.js" />
     <Content Include="Application\Controllers\expensesController.js" />
+    <Content Include="Application\Controllers\joinRoadTripController.js" />
     <Content Include="Application\Controllers\lendMoneyController.js" />
     <Content Include="Application\Controllers\newRoadTripController.js" />
     <Content Include="Application\Controllers\roadTripDetail.js" />
@@ -642,6 +649,7 @@
     <Content Include="templates\addUsersToRoadTrip.html" />
     <Content Include="templates\deleteRoadTrip.html" />
     <Content Include="templates\expensesView.html" />
+    <Content Include="templates\joinRoadTrip.html" />
     <Content Include="templates\lendMoney.html" />
     <Content Include="templates\newRoadTrip.html" />
     <Content Include="templates\roadTripDetail.html" />
@@ -705,6 +713,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312271323429_abilityToDeleteRoadTrip.resx">
       <DependentUpon>201312271323429_abilityToDeleteRoadTrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312271844133_RoadTripHashCode.resx">
+      <DependentUpon>201312271844133_RoadTripHashCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

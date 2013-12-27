@@ -13,4 +13,7 @@
             }, function() {
                 alert('Error!');
             });
+        $scope.isDeletable = function (trip) {
+           return trip.ownerId === parseInt($('input#hfUserId').val());
+        };
     }];

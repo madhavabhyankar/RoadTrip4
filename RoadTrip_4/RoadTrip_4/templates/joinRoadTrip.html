@@ -1,0 +1,19 @@
+﻿<div>
+    <form name="joinRoadTripForm" class="form-inline" role="form" novalidate data-ng-submit="join()">
+        <div class="form-group">
+            <label class="sr-only" for="roadTripCode">Road Trip Id</label>
+            <input type="text" class="form-control" data-ng-model="joinRoadTrip.roadTripCodedId" id="roadTripCode" placeholder="Enter Road Trip Code" required data-ng-minlength="5">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="ownerEmail">Road Trip Id</label>
+            <input type="email" class="form-control" data-ng-model="joinRoadTrip.ownerEmailId" id="ownerEmail" placeholder="Enter owners email" required >
+        </div>
+
+        <div>
+            <div class="btn-group">
+                <input type="submit" class="btn" value="Save" data-ng-disabled="joinRoadTripForm.$invalid" />
+                <a href="#/" class="btn">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

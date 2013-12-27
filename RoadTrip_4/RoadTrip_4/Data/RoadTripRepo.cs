@@ -75,6 +75,12 @@ namespace RoadTrip_4.Data
             }
         }
 
+        public RoadTrip GetRoadTripByRoadTripHash(string roadTripHashId)
+        {
+            var rtHashUpper = roadTripHashId.ToUpper();
+            return _context.RoadTrips.FirstOrDefault(x => x.RoadTripHashId == rtHashUpper);
+        }
+
         public UserDetail GetUserDetailByEmail(string email)
         {
             return _context.UserDetails.FirstOrDefault(x => x.Email == email);

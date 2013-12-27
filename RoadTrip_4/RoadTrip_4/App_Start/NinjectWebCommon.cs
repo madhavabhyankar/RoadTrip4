@@ -63,6 +63,7 @@ namespace RoadTrip_4.App_Start
             kernel.Bind<RoadTripContext>().To<RoadTripContext>().InRequestScope();
             kernel.Bind<IRoadTripRepo>().To<RoadTripRepo>().InRequestScope();
             kernel.Bind<IPayouts>().To<Payouts>().InRequestScope();
+            kernel.Bind<IUtilities>().To<Utilities>().InRequestScope();
         }        
     }
 }

@@ -38,5 +38,9 @@ module.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/deleteRoadTrip/:roadTripId', {
         controller: 'deleteRoadTripController',
         templateUrl: '../templates/deleteRoadTrip.html'
+    });
+    $routeProvider.when('/joinRoadTrip', {
+        controller: 'joinRoadTripController',
+        templateUrl: '../templates/joinRoadTrip.html'
     })
 }]);
