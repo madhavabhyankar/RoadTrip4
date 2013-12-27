@@ -2,17 +2,22 @@
 function ($http, $q) {
 
     _roadTrips = [];
+    _roadTripsInitialized = false;
 
     _getRoadTripsForUser = function(userDetailId) {
         var deferred = $q.defer();
-
-        $http.get('/api/RoadTrips/' + userDetailId)
-            .then(function(result) {
-                angular.copy(result.data, _roadTrips);
-                deferred.resolve();
-            }, function() {
-                deferred.reject();
-            });
+        if (!_roadTripsInitialized) {
+            $http.get('/api/RoadTrips/' + userDetailId)
+                .then(function(result) {
+                    angular.copy(result.data, _roadTrips);
+                    _roadTripsInitialized = true;
+                    deferred.resolve(_roadTrips);
+                }, function() {
+                    deferred.reject();
+                });
+        } else {
+            deferred.resolve(_roadTrips);
+        }
         return deferred.promise;
     };
 
@@ -78,7 +83,7 @@ function ($http, $q) {
             });
         return deferred.promise;
     };
-    _getPayoutForRoadTrip = function (roadTripId, userId) {
+    _getPayoutForRoadTrip = function(roadTripId, userId) {
         var deferred = $q.defer();
         $http.get('/api/payout/' + roadTripId + '/' + userId)
             .then(function(result) {
@@ -87,7 +92,22 @@ function ($http, $q) {
                 deferred.reject();
             });
         return deferred.promise;
-    }
+    };
+    _deleteRoadTrip = function(roadTripId) {
+        var deferred = $q.defer();
+        $http.delete('/api/RoadTrips/'+ roadTripId)
+            .then(function(result) {
+                var trips = [];
+                angular.copy(_roadTrips, trips);
+                _roadTrips = _.filter(trips, function(val) {
+                    return val.id !== roadTripId;
+                });
+                deferred.resolve(_roadTrips);
+            }, function(e) {
+                deferred.reject(e);
+            });
+        return deferred.promise;
+    };
     return {
         roadTrips: _roadTrips,
         getRoadTripsForUser: _getRoadTripsForUser,
@@ -97,7 +117,8 @@ function ($http, $q) {
         getExpensesForRoadTrip: _getExpensesForRoadTrip,
         getMyExpensesForRoadTrip: _getMyExpensesForRoadTrip,
         saveNewRoadTripExpense: _saveNewRoadTripExpense,
-        getPayoutForRoadTrip: _getPayoutForRoadTrip
+        getPayoutForRoadTrip: _getPayoutForRoadTrip,
+        deleteRoadTrip: _deleteRoadTrip
     };
     
 

@@ -21,18 +21,18 @@ namespace RoadTrip_4.Modules
             //Get all expenses
             var exp = roadTrip.ExpensesForRoadTrip;
             var totalMoneySpent = exp.Where(x => !x.BorrowerId.HasValue).Sum(x => x.Amount);
-            if (roadTrip.UserInRoadTrip.Count == 1)
-            {
-                return new List<PayoutModel>
-                    {
-                        new PayoutModel
-                            {
-                                Amount = 0,
-                                PayToName = "",
-                                PayToUserId = 0
-                            }
-                    };
-            }
+            //if (roadTrip.UserInRoadTrip.Count == 1)
+            //{
+            //    return new List<PayoutModel>
+            //        {
+            //            new PayoutModel
+            //                {
+            //                    Amount = 0,
+            //                    PayToName = "",
+            //                    PayToUserId = 0
+            //                }
+            //        };
+            //}
             var sharePerUser = Math.Round(totalMoneySpent/roadTrip.UserInRoadTrip.Count, 2);
 
             
@@ -91,7 +91,8 @@ namespace RoadTrip_4.Modules
 
                 }
             }
-            return SettlementDict[userId];
+
+            return SettlementDict.ContainsKey(userId) ? SettlementDict[userId] : new List<PayoutModel>();
 
 
         }

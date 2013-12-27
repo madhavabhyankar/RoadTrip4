@@ -3,6 +3,7 @@ function($scope, $routeParams, $window, dataService) {
     $scope.peopleInRoadTrip = [];
     $scope.lendMoney = {};
     $scope.borrower = null;
+    $scope.roadTripId = $routeParams.roadTripId;
     $window.navigator.geolocation.getCurrentPosition(function (position) {
         $scope.$apply(function () {
             $scope.position = position;
@@ -10,11 +11,15 @@ function($scope, $routeParams, $window, dataService) {
     }, function (error) {
         //position Error
     });
-    
+    var lendingUser = parseInt($('input#hfUserId').val());
     dataService.getPeopleInRoadTrip($routeParams.roadTripId)
             .then(function (result) {
                 //success
-                angular.copy(result.data, $scope.peopleInRoadTrip);
+                allInRoadTrip = [];
+                angular.copy(result.data, allInRoadTrip);
+                $scope.peopleInRoadTrip = _.filter(allInRoadTrip, function(val) {
+                    return val.id !== lendingUser;
+                });
             }, function () {
                 //error
             });

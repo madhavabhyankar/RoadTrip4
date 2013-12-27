@@ -61,11 +61,18 @@ namespace RoadTrip_4.Data
 
         public RoadTrip GetRoadTripByRoadTripId(Guid roadTripId, bool includeExpenses, bool includeUsers)
         {
-            return
-                _context.RoadTrips.Include("ExpensesForRoadTrip")
-                        .Include("UserInRoadTrip")
-                        .Include("UserInRoadTrip.UserDetail")
-                        .FirstOrDefault(x => x.Id == roadTripId);
+            if (includeExpenses && includeUsers)
+            {
+                return
+                    _context.RoadTrips.Include("ExpensesForRoadTrip")
+                            .Include("UserInRoadTrip")
+                            .Include("UserInRoadTrip.UserDetail")
+                            .FirstOrDefault(x => x.Id == roadTripId);
+            }
+            else
+            {
+                return _context.RoadTrips.FirstOrDefault(x => x.Id == roadTripId);
+            }
         }
 
         public UserDetail GetUserDetailByEmail(string email)

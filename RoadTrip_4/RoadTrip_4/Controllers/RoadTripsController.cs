@@ -26,6 +26,7 @@ namespace RoadTrip_4.Controllers
         public HttpResponseMessage Post([FromBody] RoadTrip roadTrip)
         {
             roadTrip.Id = Guid.NewGuid();
+            roadTrip.RoadTripStatus = RoadTripStatus.Active;
             if (_repo.AddNewRoadTrip(roadTrip) 
                 && _repo.AddNewRoadTripUserMap(new PersonToRoadTripMap
                     {
@@ -36,6 +37,18 @@ namespace RoadTrip_4.Controllers
             {
                 
                 return Request.CreateResponse(HttpStatusCode.Created, roadTrip);
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(Guid id)
+        {
+            var roadTrip = _repo.GetRoadTripByRoadTripId(id, false, false);
+            roadTrip.RoadTripStatus = RoadTripStatus.Deleted;
+            if (_repo.Save())
+            {
+                return Request.CreateResponse(HttpStatusCode.Accepted, roadTrip);
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest);
         }

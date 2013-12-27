@@ -35,4 +35,8 @@ module.config(['$routeProvider', function($routeProvider) {
         controller: 'lendMoneyController',
         templateUrl: '../templates/lendMoney.html'
     });
+    $routeProvider.when('/deleteRoadTrip/:roadTripId', {
+        controller: 'deleteRoadTripController',
+        templateUrl: '../templates/deleteRoadTrip.html'
+    })
 }]);

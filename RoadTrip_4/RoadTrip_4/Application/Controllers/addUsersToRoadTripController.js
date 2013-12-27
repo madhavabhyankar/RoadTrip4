@@ -8,7 +8,8 @@ function($scope, $window, $routeParams, dataService) {
         $scope.addUserToRoadTrip.ownerId = $('input#hfUserId').val();
         dataService.addUerToRoadTrip($scope.addUserToRoadTrip, $('input#hfUserId').val())
             .then(function (result) {
-                $window.location.href = "#/roadTripDetail/" + $routeParams.roadTripId;
+                
+                $window.location.href = "#/roadTripUsers/" + $routeParams.roadTripId;
                 
                 //success
             }, function() {

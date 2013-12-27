@@ -239,6 +239,10 @@
     <Compile Include="Migrations\201312261943112_InitialMigration.Designer.cs">
       <DependentUpon>201312261943112_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312271323429_abilityToDeleteRoadTrip.cs" />
+    <Compile Include="Migrations\201312271323429_abilityToDeleteRoadTrip.Designer.cs">
+      <DependentUpon>201312271323429_abilityToDeleteRoadTrip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddNewUserToRoadTrip.cs" />
     <Compile Include="Models\PayoutModel.cs" />
@@ -250,6 +254,7 @@
   <ItemGroup>
     <Content Include="Application\Controllers\addNewExpenseController.js" />
     <Content Include="Application\Controllers\addUsersToRoadTripController.js" />
+    <Content Include="Application\Controllers\deleteRoadTripController.js" />
     <Content Include="Application\Controllers\expensesController.js" />
     <Content Include="Application\Controllers\lendMoneyController.js" />
     <Content Include="Application\Controllers\newRoadTripController.js" />
@@ -264,6 +269,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\RoadTrip.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -630,15 +636,20 @@
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\modernizr-2.7.1.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="templates\addNewExpense.html" />
     <Content Include="templates\addUsersToRoadTrip.html" />
+    <Content Include="templates\deleteRoadTrip.html" />
     <Content Include="templates\expensesView.html" />
     <Content Include="templates\lendMoney.html" />
     <Content Include="templates\newRoadTrip.html" />
     <Content Include="templates\roadTripDetail.html" />
     <Content Include="templates\roadTripsView.html" />
     <Content Include="templates\roadTripUsers.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -676,8 +687,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\MyRoadTrips\Index.cshtml" />
+    <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -688,6 +702,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201312261943112_InitialMigration.resx">
       <DependentUpon>201312261943112_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312271323429_abilityToDeleteRoadTrip.resx">
+      <DependentUpon>201312271323429_abilityToDeleteRoadTrip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

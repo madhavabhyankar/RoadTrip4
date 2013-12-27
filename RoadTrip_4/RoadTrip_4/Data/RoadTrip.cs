@@ -7,6 +7,11 @@ using System.Web;
 
 namespace RoadTrip_4.Data
 {
+    public enum RoadTripStatus
+    {
+        Active = 0,
+        Deleted = 1
+    }
     public class RoadTrip
     {
         [Key]
@@ -15,7 +20,7 @@ namespace RoadTrip_4.Data
         public string Details { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-
+        public RoadTripStatus RoadTripStatus { get; set; }
         [ForeignKey("Owner")]
         public int OwnerId { get; set; }
 
