@@ -1,48 +1,117 @@
 ﻿<div>
     <a data-ng-href="#/addNewExpense/{{roadTripId}}" class="btn btn-danger">Add New Expense</a>
     <a data-ng-href="#/lendMoney/{{roadTripId}}" class="btn btn-warning">Lend Money</a>
-    <a data-ng-href="#/roadTripDetail/{{roadTripId}}"class="btn btn-default">Back</a>
-    <br/>
-    <hr/>
-    Current Expenses
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Location</th>
-                
-            </tr>
-        </thead>
-        <tbody data-ng-repeat="expense in expenses|orderBy:expenseDate:false">
-            <tr>
-                <td>{{expense.owner.nickName}}</td>
-                <td>{{expense.expenseDate |  date:'MM/dd/yyyy'}}</td>
-                <td>{{expense.amount | currency}}</td>
-                <td>{{expense.city}}, {{expense.state}}</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <br/>
-    <hr/>
-    My Expenses
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Location</th>
-                
-            </tr>
-        </thead>
-        <tbody data-ng-repeat="expense in myExpenses|orderBy:expenseDate:false">
-            <tr>
-                <td>{{expense.expenseDate |  date:'MM/dd/yyyy'}}</td>
-                <td>{{expense.amount | currency}}</td>
-                <td>{{expense.city}}, {{expense.state}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <a data-ng-href="#/roadTripDetail/{{roadTripId}}" class="btn btn-default">Back</a>
+    <br />
+    <hr />
+    <div class="row">
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">Road Trip Expenses</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Location</th>
+
+                        </tr>
+                    </thead>
+                    <tbody data-ng-repeat="expense in expenses|orderBy:expenseDate:false">
+                        <tr>
+                            <td>{{expense.owner.nickName}}</td>
+                            <td>{{expense.expenseDate |  date:'MM/dd/yyyy'}}</td>
+                            <td>{{expense.amount | currency}}</td>
+                            <td>{{expense.city}}, {{expense.state}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">My Expenses</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Location</th>
+
+                        </tr>
+                    </thead>
+                    <tbody data-ng-repeat="expense in myExpenses|orderBy:expenseDate:false">
+                        <tr>
+                            <td>{{expense.expenseDate |  date:'MM/dd/yyyy'}}</td>
+                            <td>{{expense.amount | currency}}</td>
+                            <td>{{expense.city}}, {{expense.state}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">Money Lent</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Borrower</th>
+                            <th>Location</th>
+
+                        </tr>
+                    </thead>
+                    <tbody data-ng-repeat="lending in myLendings|orderBy:expenseDate:false">
+                        <tr>
+                            <td>{{lending.expenseDate |  date:'MM/dd/yyyy'}}</td>
+                            <td>{{lending.amount | currency}}</td>
+                            <td>{{lending.borrower.nickName}}</td>
+                            <td>{{lending.city}}, {{lending.state}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-danger col-md-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">Money I Borrowed</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Lender</th>
+                            <th>Location</th>
+
+                        </tr>
+                    </thead>
+                    <tbody data-ng-repeat="borrow in myBorrowings|orderBy:expenseDate:false">
+                        <tr>
+                            <td>{{borrow.expenseDate |  date:'MM/dd/yyyy'}}</td>
+                            <td>{{borrow.amount | currency}}</td>
+                            <td>{{borrow.owner.nickName}}</td>
+                            <td>{{borrow.city}}, {{borrow.state}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

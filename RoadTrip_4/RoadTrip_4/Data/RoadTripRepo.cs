@@ -56,7 +56,7 @@ namespace RoadTrip_4.Data
 
         public IQueryable<Expense> GetExpensesForRoadTrip(Guid roadTripId)
         {
-            return _context.Expenses.Include("Owner").Where(x => x.RoadTripId == roadTripId);
+            return _context.Expenses.Include("Owner").Include("Borrower"). Where(x => x.RoadTripId == roadTripId);
         }
 
         public RoadTrip GetRoadTripByRoadTripId(Guid roadTripId, bool includeExpenses, bool includeUsers)

@@ -21,12 +21,23 @@ namespace RoadTrip_4.Controllers
         // GET api/expenses/5
         public IEnumerable<Expense> Get(Guid id)
         {
-            return _repo.GetExpensesForRoadTrip(id);
+            return _repo.GetExpensesForRoadTrip(id).Where(x => !x.BorrowerId.HasValue);
         }
 
         public IEnumerable<Expense> Get(Guid roadTripId, int userId)
         {
-            return _repo.GetExpensesForRoadTrip(roadTripId).Where(x => x.OwnerId == userId);
+            return _repo.GetExpensesForRoadTrip(roadTripId).Where(x => x.OwnerId == userId && !x.BorrowerId.HasValue);
+        }
+        public IEnumerable<Expense> Get(Guid roadTripId, int userId, bool getBorrowed)
+        {
+            if (getBorrowed)
+            {
+                return _repo.GetExpensesForRoadTrip(roadTripId).Where(x => x.BorrowerId.HasValue && x.BorrowerId == userId);
+            }
+            else
+            {
+                return _repo.GetExpensesForRoadTrip(roadTripId).Where(x => x.OwnerId == userId && x.BorrowerId.HasValue);
+            }
         }
         // POST api/expenses
         public HttpResponseMessage Post([FromBody]Expense value)

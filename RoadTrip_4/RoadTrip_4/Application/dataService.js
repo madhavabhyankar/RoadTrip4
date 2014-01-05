@@ -73,6 +73,26 @@ function ($http, $q) {
             });
         return deferred.promise;
     };
+    _getMoneyLentForRoadTrip = function(roadTripId, userId) {
+        var deferred = $q.defer();
+        $http.get('/api/expenses/' + roadTripId + '/' + userId + '?getBorrowed=false')
+            .then(function(result) {
+                deferred.resolve(result);
+            }, function(e) {
+                deferred.reject(e);
+            });
+        return deferred.promise;
+    };
+    _getMoneyBorrowedForRoadTrip = function (roadTripId, userId) {
+        var deferred = $q.defer();
+        $http.get('/api/expenses/' + roadTripId + '/' + userId + '?getBorrowed=true')
+            .then(function (result) {
+                deferred.resolve(result);
+            }, function (e) {
+                deferred.reject(e);
+            });
+        return deferred.promise;
+    };
     _saveNewRoadTripExpense = function(expense) {
         var deferred = $q.defer();
         $http.post('/api/expenses', expense)
@@ -151,7 +171,9 @@ function ($http, $q) {
         getPayoutForRoadTrip: _getPayoutForRoadTrip,
         deleteRoadTrip: _deleteRoadTrip,
         joinRoadTrip: _joinRoadTrip,
-        getRoadTripById: _getRoadTripById
+        getRoadTripById: _getRoadTripById,
+        getMoneyLentForRoadTrip: _getMoneyLentForRoadTrip,
+        getMoneyBorrowedForRoadTrip: _getMoneyBorrowedForRoadTrip
     };
     
 
